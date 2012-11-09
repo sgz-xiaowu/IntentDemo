@@ -11,6 +11,7 @@ import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+//import android.view.Window;
 
 /**
  * This activity is a common class. 
@@ -103,6 +104,9 @@ public class BaseActivity extends Activity
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+        /*// Set window to no title. 
+        // This app title is "IntentDemo".
+        requestWindowFeature(Window.FEATURE_NO_TITLE);*/
         super.onCreate(savedInstanceState);
     }
     

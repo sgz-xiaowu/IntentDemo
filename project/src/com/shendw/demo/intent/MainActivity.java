@@ -69,29 +69,31 @@ public class MainActivity extends BaseActivity implements OnClickListener
     
     private void onBtn01Click()
     {
-        Intent intent = new Intent(IntentConstant.ACTION_TEST/*this, Activity01.class*/);  // Comment component, Implicit done.
+        Intent intent = new Intent(IntentConstant.ACTION_TEST01/*this, Activity01.class*/);  // Comment component, Implicit done.
 //        intent.setAction(IntentConstant.ACTION_TEST);
         startActivity(intent);
     }
 
     private void onBtn02Click()
     {
-        Intent intent = new Intent(IntentConstant.ACTION_TEST/*this, Activity02.class*/);  // Comment component, Implicit done.
+        Intent intent = new Intent(IntentConstant.ACTION_TEST02/*this, Activity02.class*/);  // Comment component, Implicit done.
 //        intent.setAction(IntentConstant.ACTION_TEST);
         startActivity(intent);
     }
 
     private void onBtn03Click()
     {
-        Intent intent = new Intent(IntentConstant.ACTION_TEST/*this, Activity03.class*/);  // Comment component, Implicit done.
+        Intent intent = new Intent(IntentConstant.ACTION_TEST03/*this, Activity03.class*/);  // Comment component, Implicit done.
 //        intent.setAction(IntentConstant.ACTION_TEST);
+        intent.addCategory(IntentConstant.PACKAGE_CATEGORY_SAMPLE);
         startActivity(intent);
     }
 
     private void onBtn04Click()
     {
-        Intent intent = new Intent(IntentConstant.ACTION_TEST/*this, Activity04.class*/);  // Comment component, Implicit done.
+        Intent intent = new Intent(IntentConstant.ACTION_TEST04/*this, Activity04.class*/);  // Comment component, Implicit done.
 //        intent.setAction(IntentConstant.ACTION_TEST);
+        intent.addCategory(IntentConstant.PACKAGE_CATEGORY_SAMPLE);
         startActivity(intent);
     }
 

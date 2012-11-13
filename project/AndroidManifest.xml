@@ -32,8 +32,10 @@
             android:label="01"
             android:exported="false" >
             <intent-filter>
+                <!-- Test Android MAIN action.
                 <action android:name="android.intent.action.MAIN"/>
-                
+                 -->
+                <action android:name="com.shendw.intent.action.test01"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
@@ -42,8 +44,13 @@
             android:label="02"
             android:exported="false" >
             <intent-filter>
+                <!-- Here we custom test-action!Implicit intent must have at least DEFAULT category.
                 <action android:name="com.shendw.intent.action.test"/>
                 
+                <category android:name="android.intent.category.DEFAULT"/>
+                 -->
+                <action android:name="com.shendw.intent.action.test02"/>
+                 
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
@@ -52,9 +59,9 @@
             android:label="03"
             android:exported="false" >
             <intent-filter>
-                <action android:name="com.shendw.intent.action.test"/>
+                <action android:name="com.shendw.intent.action.test03"/>
                 
-                <category android:name="com.shendw.intent.category.sample"/>
+                <category android:name="com.shendw.demo.intent.sample"/>
             </intent-filter>
         </activity>
         <activity
@@ -62,9 +69,9 @@
             android:label="04"
             android:exported="false" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="com.shendw.intent.action.test04"/>
                 
-                <category android:name="com.shendw.intent.category.sample"/>
+                <category android:name="com.shendw.demo.intent.sample"/>
             </intent-filter>
         </activity>
     </application>

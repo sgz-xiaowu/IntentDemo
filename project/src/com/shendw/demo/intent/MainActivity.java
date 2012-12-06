@@ -37,11 +37,14 @@ public class MainActivity extends BaseActivity implements OnClickListener
         Button btn02 = (Button) findViewById(R.id.button2);
         Button btn03 = (Button) findViewById(R.id.button3);
         Button btn04 = (Button) findViewById(R.id.button4);
+        Button btnTest = (Button) findViewById(R.id.button_test);
+        btnTest.setText("TEST");
         
         btn01.setOnClickListener(this);
         btn02.setOnClickListener(this);
         btn03.setOnClickListener(this);
         btn04.setOnClickListener(this);
+        btnTest.setOnClickListener(this);
         
     }
     
@@ -68,11 +71,15 @@ public class MainActivity extends BaseActivity implements OnClickListener
             onBtn04Click();
             break;
             
+        case R.id.button_test:
+            onBtnTestClick();
+            break;
+            
         default:
             break;
         }
     }
-    
+
     /*Explicit intents.*/
     
     private void onBtn01Click()
@@ -87,7 +94,7 @@ public class MainActivity extends BaseActivity implements OnClickListener
         startActivity(intent);
         
         // Test file list order.
-        testFileListOrder();
+//        testFileListOrder();
     }
 
     private void onBtn02Click()
@@ -111,6 +118,14 @@ public class MainActivity extends BaseActivity implements OnClickListener
 //        intent.setAction(IntentConstant.ACTION_TEST);
         intent.addCategory(IntentConstant.PACKAGE_CATEGORY_SAMPLE);
         startActivity(intent);
+    }
+    
+    private void onBtnTestClick()
+    {
+        Intent intent = new Intent(IntentConstant.ACTION_TEST_TEST/*this, Activity04.class*/);  // Comment component, Implicit done.
+//      intent.setAction(IntentConstant.ACTION_TEST);
+      intent.addCategory(IntentConstant.PACKAGE_CATEGORY_SAMPLE);
+      startActivity(intent);
     }
 
     @Override

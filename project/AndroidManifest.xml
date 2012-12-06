@@ -20,10 +20,11 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_main" >
+            android:label="@string/title_activity_main"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+                <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -77,6 +78,17 @@
                      manifest中必须配置test-category,在activity code中可以不配test-category；
                                                        但是activity code中配置了test-category，而manifest中没有配置，则会报错：No-activity to handle...
                  -->
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="com.shendw.demo.intent.sample"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".AppPackageInfo"
+            android:label="AppPackageInfo"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.shendw.intent.action.test_test"/>
+                
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="com.shendw.demo.intent.sample"/>
             </intent-filter>

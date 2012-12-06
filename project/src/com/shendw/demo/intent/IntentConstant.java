@@ -16,8 +16,10 @@ public class IntentConstant
     public static final String ACTION_TEST02 = "com.shendw.intent.action.test02";
     public static final String ACTION_TEST03 = "com.shendw.intent.action.test03";
     public static final String ACTION_TEST04 = "com.shendw.intent.action.test04";
+    public static final String ACTION_TEST_TEST = "com.shendw.intent.action.test_test";
     
     // The category.
+    // 2012.12.06 latest ps:category can be customed.
     public static final String CATEGORY                = "com.shendw.intent.category.xxx";
     public static final String PACKAGE_CATEGORY        = "com.shendw.demo.intent.xxx";
     public static final String CATEGORY_SAMPLE         = "com.shendw.intent.category.sample";

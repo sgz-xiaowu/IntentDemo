@@ -5,6 +5,12 @@
  */
 package com.shendw.demo.intent;
 
+import java.io.File;
+import java.text.Collator;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -19,6 +25,8 @@ import android.widget.Button;
  */
 public class MainActivity extends BaseActivity implements OnClickListener
 {
+    private String[] mFileLists;
+
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -69,9 +77,17 @@ public class MainActivity extends BaseActivity implements OnClickListener
     
     private void onBtn01Click()
     {
-        Intent intent = new Intent(IntentConstant.ACTION_TEST01/*this, Activity01.class*/);  // Comment component, Implicit done.
-//        intent.setAction(IntentConstant.ACTION_TEST);
+        // 进程间、进程内都可以应用intent隐式跳转和显示跳转。依赖于我们是否知晓Activity or Component Name。
+//        Intent intent = new Intent(IntentConstant.ACTION_TEST01/*this, Activity01.class*/);  // Comment component, Implicit done.
+        Intent intent = new Intent(Intent.ACTION_MAIN/*this, Activity01.class*/);  // Comment component, Implicit done.
+        intent.addCategory(Intent.CATEGORY_LAUNCHER);         //进程间：Intent2Demo.MainActivity action=Main. category=launcher&default
+                                                              //进程内：IntentDemo.Activity01 action=Main. category=default.
+                                                              //addCategory(launcher)后，可以启动Intent2Demo.MainActivity，不能启动IntentDemo.Activity01
+        //        intent.setAction(IntentConstant.ACTION_TEST);
         startActivity(intent);
+        
+        // Test file list order.
+        testFileListOrder();
     }
 
     private void onBtn02Click()
@@ -85,7 +101,7 @@ public class MainActivity extends BaseActivity implements OnClickListener
     {
         Intent intent = new Intent(IntentConstant.ACTION_TEST03/*this, Activity03.class*/);  // Comment component, Implicit done.
 //        intent.setAction(IntentConstant.ACTION_TEST);
-        intent.addCategory(IntentConstant.PACKAGE_CATEGORY_SAMPLE);
+//        intent.addCategory(IntentConstant.PACKAGE_CATEGORY_SAMPLE);
         startActivity(intent);
     }
 
@@ -103,4 +119,70 @@ public class MainActivity extends BaseActivity implements OnClickListener
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
+    
+
+    private void testFileListOrder()
+    {
+//        String linuxSysPreinstallNotifyPath = "/system/media/audio/notifications";
+        String linuxSysPreinstallNotifyPath = "/system/app";
+//      File sourceDir = new File(winPath);
+      File sourceDir = new File(linuxSysPreinstallNotifyPath);
+      
+      if (sourceDir.exists())
+      {
+          if (sourceDir.isDirectory())
+          {
+              mFileLists = sourceDir.list();
+          }
+      }
+      
+      if (null != mFileLists)
+      {
+          int count = 0;
+          System.out.println("Before sort:");
+          for (String childName : mFileLists)
+          {
+              System.out.println("Find file " + count++ + " : " + childName);
+          }
+          
+            // sort.
+          sortByFileName();
+          
+          System.out.println("After sort:");
+          count = 0;
+          for (String childName : mFileLists)
+          {
+              System.out.println("Find file " + count++ + " : " + childName);
+          }
+      }
+    }
+
+    private void sortByFileName()
+    {
+        ArrayList<String> mList = ToArrayList.toArrayList(mFileLists);
+        Collections.sort(mList, new Comparator<String>()
+        {
+            @Override
+            public int compare(String o1, String o2)
+            {
+                if (null == o1 && null != o2)
+                {
+                    return -1;
+                }
+                if (null != o1 && null == o2)
+                {
+                    return 1;
+                }
+                if (null == o1 && null == o2)
+                {
+                    return 0;
+                }
+                return Collator.getInstance().compare(o1, o2);
+            }
+        });
+        
+        mFileLists = mList.toArray(new String[mList.size()]);
+    }
+
+    
 }

@@ -32,10 +32,10 @@
             android:label="01"
             android:exported="false" >
             <intent-filter>
-                <!-- Test Android MAIN action.
+                <!-- Test Android MAIN action. -->
                 <action android:name="android.intent.action.MAIN"/>
-                 -->
-                <action android:name="com.shendw.intent.action.test01"/>
+                
+                <!-- <action android:name="com.shendw.intent.action.test01"/> -->
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
@@ -61,6 +61,7 @@
             <intent-filter>
                 <action android:name="com.shendw.intent.action.test03"/>
                 
+                <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="com.shendw.demo.intent.sample"/>
             </intent-filter>
         </activity>
@@ -71,6 +72,12 @@
             <intent-filter>
                 <action android:name="com.shendw.intent.action.test04"/>
                 
+                <!-- 此处测试test-category不成功的原因：
+                     Here we custom test-category!Implicit intent also must have at least DEFAULT category.
+                     manifest中必须配置test-category,在activity code中可以不配test-category；
+                                                       但是activity code中配置了test-category，而manifest中没有配置，则会报错：No-activity to handle...
+                 -->
+                <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="com.shendw.demo.intent.sample"/>
             </intent-filter>
         </activity>
